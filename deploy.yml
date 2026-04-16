@@ -1,0 +1,12 @@
+-name : Deploy Maven Artifact
+ hosts : web
+ become : yes
+
+ tasks :
+   -name : Copy JAR file
+    copy :
+       src : /var/lib/jenkins/workspace/gradleproj/build.gradle/target/build.gradle-1.0-SNAPSHOT.jar
+       dest : /opt/build.gradle-1.0-SNAPSHOT.jar
+
+    -name : Run application
+    shell : nohup java -jar /opt/build.gragle-1.0-SNAPSHOT.jar &
